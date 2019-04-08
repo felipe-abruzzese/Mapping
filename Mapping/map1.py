@@ -24,5 +24,7 @@ for lt, ln, el in zip(lat, lon, elev): #A função zip() permite passar por duas
     iframe = folium.IFrame(html=html % str(el), width=200, height=100)
     fg.add_child(folium.CircleMarker(location=[lt, ln], radius = 6, popup=folium.Popup(iframe), fill_color= color_producer(el), color = 'grey', fill_opacity=0.7))
 
+fg.add_child(folium.GeoJson(data=(open('world.json', 'r', encoding='utf-8-sig').read())))
+
 map.add_child(fg)
 map.save("Map1.html")
